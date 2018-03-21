@@ -27,19 +27,24 @@ def print_stats(seqfilename, fmt):
         sys.stderr.write("ERROR: File {} has not a valid {} format.".format(seqfilename, fmt))
         return 
 
-    print("\t{:d} sequences.".format(len(seq_lengths)))
-    if len(seq_lengths):
+    seq_lengths_len = len(seq_lengths)
+    print("\t{:,d} sequence{}.".format(seq_lengths_len, "" if seq_lengths_len == 1 else "s"))
+    if seq_lengths_len > 1:
         print("\tSequence length stats:")
-        print("\t\tMin:\t{:d}".format(min(seq_lengths)))
-        print("\t\tMean:\t{:.1f}".format(mean(seq_lengths)))
+        print("\t\tMin:\t{:,d}".format(min(seq_lengths)))
+        print("\t\tMean:\t{:,.1f}".format(mean(seq_lengths)))
         try:
-            print("\t\tMode:\t{:d}".format(mode(seq_lengths)))
+            print("\t\tMode:\t{:,d}".format(mode(seq_lengths)))
 
         except:
             print("\t\tMode: no unique mode")
 
-        print("\t\tMedian:\t{:.1f}".format(median(seq_lengths)))
-        print("\t\tMax:\t{:d}".format(max(seq_lengths)))
+        print("\t\tMedian:\t{:,.1f}".format(median(seq_lengths)))
+        print("\t\tMax:\t{:,d}".format(max(seq_lengths)))
+        print("\t\tTotal:\t{:,d}".format(sum(seq_lengths)))
+
+    elif len(seq_lengths) == 1:
+        print("\tSequence length:\t{:,d}".format(seq_lengths[0]))
 
     print("\n")
         

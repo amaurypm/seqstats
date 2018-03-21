@@ -55,7 +55,7 @@ def main():
     parser=argparse.ArgumentParser(description="Print basic stats from sequence files.")
     parser.add_argument('seqfile', nargs='+', help='Sequence file.')
     parser.add_argument('-f', '--format', choices=['fasta','clustal', 'embl', 'genbank', 'imgt', 'phd', 'pir', 'tab'], default='fasta', help='Sequence format [default: %(default)s].')
-    parser.add_argument('-v', '--version', action='version', version='0.9.0', help="Show program's version number and exit.")
+    parser.add_argument('-v', '--version', action='version', version='0.9.3', help="Show program's version number and exit.")
 
     args=parser.parse_args()
 

@@ -24,21 +24,23 @@ def print_stats(seqfilename, fmt):
             seq_lengths.append(len(record))
 
     except ValueError:
-        sys.stderr.write("ERROR: This file has not a valid {} format.".format(fmt))
-        sys.exit(1)
+        sys.stderr.write("ERROR: File {} has not a valid {} format.".format(seqfilename, fmt))
+        return 
 
     print("\t{:d} sequences.".format(len(seq_lengths)))
-    print("\tSequence length stats:")
-    print("\t\tMin:\t{:d}".format(min(seq_lengths)))
-    print("\t\tMean:\t{:.1f}".format(mean(seq_lengths)))
-    try:
-        print("\t\tMode:\t{:d}".format(mode(seq_lengths)))
+    if len(seq_lengths):
+        print("\tSequence length stats:")
+        print("\t\tMin:\t{:d}".format(min(seq_lengths)))
+        print("\t\tMean:\t{:.1f}".format(mean(seq_lengths)))
+        try:
+            print("\t\tMode:\t{:d}".format(mode(seq_lengths)))
 
-    except:
-        print("\t\tMode: no unique mode")
+        except:
+            print("\t\tMode: no unique mode")
 
-    print("\t\tMedian:\t{:.1f}".format(median(seq_lengths)))
-    print("\t\tMax:\t{:d}".format(max(seq_lengths)))
+        print("\t\tMedian:\t{:.1f}".format(median(seq_lengths)))
+        print("\t\tMax:\t{:d}".format(max(seq_lengths)))
+
     print("\n")
         
 ## Main
